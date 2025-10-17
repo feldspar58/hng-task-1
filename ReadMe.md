@@ -24,6 +24,9 @@ By default `app.js` sets the `#time` element using `Date.now()` every second.
 1. Clone or copy the repository to your computer.
 2. Open `index.html` in a browser (double-click or right-click -> Open with...).
 
+You can also serve it locally using:
+python -m http.server
+
 Then open `http://localhost:8000` in your browser.
 
 ## License & credits

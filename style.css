@@ -78,6 +78,11 @@ section span {
   margin: 10px;
 }
 
+a:focus{
+    outline: 2px solid black;
+    outline-offset: 4px;
+}
+
 .first-part {
   display: flex;
   border-top: 1px solid black;
