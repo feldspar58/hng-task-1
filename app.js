@@ -1,7 +1,8 @@
 const timeStamp = document.getElementById("time");
 
 function updateTime() {
-  timeStamp.textContent = Date.now();
+
+  timeStamp.textContent = `${Date.now()} ms`;
 }
 
 updateTime();
