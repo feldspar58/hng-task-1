@@ -58,6 +58,13 @@ if (btnSubmit) {
       }
     });
 
+    const emailInput = document.getElementById("email");
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailPattern.test(emailInput.value)) {
+      showError("Please enter a valid email");
+      }
+
     const textAreaError = errorMessage[errorMessage.length - 1];
     if (textArea.value.trim().length < 10) {
       textAreaError.style.display = "flex";
