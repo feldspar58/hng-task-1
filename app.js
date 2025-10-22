@@ -33,7 +33,7 @@ const successMessage = document.querySelector(".success");
 const inputs = document.querySelectorAll("input[type=text], input[type=email]");
 const textArea = document.querySelector("textarea");
 const errorMessage = document.querySelectorAll(".error-message");
-
+if(btnSubmit){
 const validInputs = () => {
   let allValid = true;
 
@@ -108,7 +108,7 @@ btnSubmit.addEventListener("click", (e) => {
   e.preventDefault();
   validInputs();
 });
-
+};
 //form validation end
 
 // About page start
