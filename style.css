@@ -444,7 +444,6 @@ textarea {
 
 /*about page*/
 
-
 .about-me {
   background-color: burlywood;
   min-height: 100vh;
@@ -467,7 +466,7 @@ textarea {
   border-radius: 10px;
 }
 
-.active{
+.active {
   display: flex;
 }
 
@@ -513,7 +512,7 @@ textarea {
 }
 
 @media (max-width: 560px) {
-  .about-section{
+  .about-section {
     flex-direction: column;
   }
 }

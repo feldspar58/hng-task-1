@@ -37,81 +37,77 @@ const errorMessage = document.querySelectorAll(".error-message");
 const validInputs = () => {
   let allValid = true;
 
-    inputs.forEach((input, index) => {
-        input.addEventListener("input", () => {
-              errorMessage[index].style.display = "none";
-                    input.style.borderBottom = "1px solid green";
-                        });
+  inputs.forEach((input, index) => {
+    input.addEventListener("input", () => {
+      errorMessage[index].style.display = "none";
+      input.style.borderBottom = "1px solid green";
+    });
 
-                            const value = input.value.trim();
+    const value = input.value.trim();
 
-                                // Empty field check
-                                    if (value === "") {
-                                          errorMessage[index].textContent = "This field is required.";
-                                                errorMessage[index].style.display = "flex";
-                                                      input.style.borderBottom = "1px solid red";
-                                                            allValid = false;
+    // Empty field check
+    if (value === "") {
+      errorMessage[index].textContent = "This field is required.";
+      errorMessage[index].style.display = "flex";
+      input.style.borderBottom = "1px solid red";
+      allValid = false;
 
-                                                                  setTimeout(() => {
-                                                                          errorMessage[index].style.display = "none";
-                                                                                }, 3000);
-                                                                                      return;
-                                                                                          }
+      setTimeout(() => {
+        errorMessage[index].style.display = "none";
+      }, 3000);
+      return;
+    }
 
-                                                                                              // Email validation check
-                                                                                                  if (input.type === "email") {
-                                                                                                        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-                                                                                                              if (!emailPattern.test(value)) {
-                                                                                                                      errorMessage[index].textContent = "Please enter a valid email address.";
-                                                                                                                              errorMessage[index].style.display = "flex";
-                                                                                                                                      input.style.borderBottom = "1px solid red";
-                                                                                                                                              allValid = false;
+    // Email validation check
+    if (input.type === "email") {
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(value)) {
+        errorMessage[index].textContent = "Please enter a valid email address.";
+        errorMessage[index].style.display = "flex";
+        input.style.borderBottom = "1px solid red";
+        allValid = false;
 
-                                                                                                                                                      setTimeout(() => {
-                                                                                                                                                                errorMessage[index].style.display = "none";
-                                                                                                                                                                        }, 3000);
-                                                                                                                                                                                return;
-                                                                                                                                                                                      }
-                                                                                                                                                                                          }
+        setTimeout(() => {
+          errorMessage[index].style.display = "none";
+        }, 3000);
+        return;
+      }
+    }
 
-                                                                                                                                                                                            
-                                                                                                                                                                                                  errorMessage[index].style.display = "none";
-                                                                                                                                                                                                      input.style.borderBottom = "1px solid green";
-                                                                                                                                                                                                        });
+    errorMessage[index].style.display = "none";
+    input.style.borderBottom = "1px solid green";
+  });
 
-                                                                                                                                                                                                        
-                                                                                                                                                                                                            const textAreaError = errorMessage[errorMessage.length - 1];
-                                                                                                                                                                                                              if (textArea.value.trim().length < 10) {
-                                                                                                                                                                                                                  textAreaError.textContent = "Message must be at least 10 characters long.";
-                                                                                                                                                                                                                      textAreaError.style.display = "flex";
-                                                                                                                                                                                                                          textArea.style.borderBottom = "1px solid red";
-                                                                                                                                                                                                                              allValid = false;
+  const textAreaError = errorMessage[errorMessage.length - 1];
+  if (textArea.value.trim().length < 10) {
+    textAreaError.textContent = "Message must be at least 10 characters long.";
+    textAreaError.style.display = "flex";
+    textArea.style.borderBottom = "1px solid red";
+    allValid = false;
 
-                                                                                                                                                                                                                                  setTimeout(() => {
-                                                                                                                                                                                                                                        textAreaError.style.display = "none";
-                                                                                                                                                                                                                                            }, 3000);
-                                                                                                                                                                                                                                              } else {
-                                                                                                                                                                                                                                                  textAreaError.style.display = "none";
-                                                                                                                                                                                                                                                      textArea.style.borderBottom = "1px solid green";
-                                                                                                                                                                                                                                                        }
+    setTimeout(() => {
+      textAreaError.style.display = "none";
+    }, 3000);
+  } else {
+    textAreaError.style.display = "none";
+    textArea.style.borderBottom = "1px solid green";
+  }
 
-                                                                                                                                                                                                                                                          
-                                                                                                                                                                                                                                                            if (allValid) {
-                                                                                                                                                                                                                                                                successMessage.style.display = "flex";
-                                                                                                                                                                                                                                                                    setTimeout(() => {
-                                                                                                                                                                                                                                                                          successMessage.style.display = "none";
-                                                                                                                                                                                                                                                                              }, 3000);
+  if (allValid) {
+    successMessage.style.display = "flex";
+    setTimeout(() => {
+      successMessage.style.display = "none";
+    }, 3000);
 
-                                                                                                                                                                                                                                                                                  
-                                                                                                                                                                                                                                                                                      textArea.value = "";
-                                                                                                                                                                                                                                                                                          inputs.forEach((input) => (input.value = ""));
-                                                                                                                                                                                                                                                                                            }
-                                                                                                                                                                                                                                                                                            };
+    textArea.value = "";
+    inputs.forEach((input) => (input.value = ""));
+  }
+};
 
-                                                                                                                                                                                                                                                                                            btnSubmit.addEventListener("click", (e) => {
-                                                                                                                                                                                                                                                                                              e.preventDefault();
-                                                                                                                                                                                                                                                                                                validInputs();
-                                                                                                                                                                                                                                                                                                });
+btnSubmit.addEventListener("click", (e) => {
+  e.preventDefault();
+  validInputs();
+});
 
 //form validation end
 
@@ -141,4 +137,3 @@ if (slides.length && previous && next) {
 }
 
 // About page end
-
