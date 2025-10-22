@@ -28,73 +28,90 @@ iconClose.addEventListener("click", () => {
 });
 
 //form validation start
-
 const btnSubmit = document.querySelector(".btn");
-if (btnSubmit) {
-  const successMessage = document.querySelector(".success");
-  const inputs = document.querySelectorAll("input[type=text], input[type=email]");
-  const textArea = document.querySelector("textarea");
-  const errorMessage = document.querySelectorAll(".error-message");
+const successMessage = document.querySelector(".success");
+const inputs = document.querySelectorAll("input[type=text], input[type=email]");
+const textArea = document.querySelector("textarea");
+const errorMessage = document.querySelectorAll(".error-message");
 
-  const validInputs = () => {
-    let allValid = true;
+const validInputs = () => {
+  let allValid = true;
 
     inputs.forEach((input, index) => {
-      input.addEventListener("input", () => {
-        errorMessage[index].style.display = "none";
-        input.style.borderBottom = "1px solid Green";
-      });
+        input.addEventListener("input", () => {
+              errorMessage[index].style.display = "none";
+                    input.style.borderBottom = "1px solid green";
+                        });
 
-      if (input.value.trim() === "") {
-        errorMessage[index].style.display = "flex";
-        input.style.borderBottom = "1px solid Red";
-        allValid = false;
+                            const value = input.value.trim();
 
-        setTimeout(() => {
-          errorMessage[index].style.display = "none";
-        }, 3000);
-      } else {
-        errorMessage[index].style.display = "none";
-      }
-    });
+                                // Empty field check
+                                    if (value === "") {
+                                          errorMessage[index].textContent = "This field is required.";
+                                                errorMessage[index].style.display = "flex";
+                                                      input.style.borderBottom = "1px solid red";
+                                                            allValid = false;
 
-    const emailInput = document.getElementById("email");
-    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                                                                  setTimeout(() => {
+                                                                          errorMessage[index].style.display = "none";
+                                                                                }, 3000);
+                                                                                      return;
+                                                                                          }
 
-    if (!emailPattern.test(emailInput.value)) {
-      showError("Please enter a valid email");
-      }
+                                                                                              // Email validation check
+                                                                                                  if (input.type === "email") {
+                                                                                                        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                                                                                                              if (!emailPattern.test(value)) {
+                                                                                                                      errorMessage[index].textContent = "Please enter a valid email address.";
+                                                                                                                              errorMessage[index].style.display = "flex";
+                                                                                                                                      input.style.borderBottom = "1px solid red";
+                                                                                                                                              allValid = false;
 
-    const textAreaError = errorMessage[errorMessage.length - 1];
-    if (textArea.value.trim().length < 10) {
-      textAreaError.style.display = "flex";
-      textArea.style.borderBottom = "1px solid Red";
-      allValid = false;
+                                                                                                                                                      setTimeout(() => {
+                                                                                                                                                                errorMessage[index].style.display = "none";
+                                                                                                                                                                        }, 3000);
+                                                                                                                                                                                return;
+                                                                                                                                                                                      }
+                                                                                                                                                                                          }
 
-      setTimeout(() => {
-        textAreaError.style.display = "none";
-      }, 3000);
-    } else {
-      textAreaError.style.display = "none";
-      textArea.style.borderBottom = "1px solid Green";
-    }
+                                                                                                                                                                                            
+                                                                                                                                                                                                  errorMessage[index].style.display = "none";
+                                                                                                                                                                                                      input.style.borderBottom = "1px solid green";
+                                                                                                                                                                                                        });
 
-    if (allValid) {
-      successMessage.style.display = "flex";
-      setTimeout(() => {
-        successMessage.style.display = "none";
-      }, 3000);
+                                                                                                                                                                                                        
+                                                                                                                                                                                                            const textAreaError = errorMessage[errorMessage.length - 1];
+                                                                                                                                                                                                              if (textArea.value.trim().length < 10) {
+                                                                                                                                                                                                                  textAreaError.textContent = "Message must be at least 10 characters long.";
+                                                                                                                                                                                                                      textAreaError.style.display = "flex";
+                                                                                                                                                                                                                          textArea.style.borderBottom = "1px solid red";
+                                                                                                                                                                                                                              allValid = false;
 
-      textArea.value = "";
-      inputs.forEach((input) => (input.value = ""));
-    }
-  };
+                                                                                                                                                                                                                                  setTimeout(() => {
+                                                                                                                                                                                                                                        textAreaError.style.display = "none";
+                                                                                                                                                                                                                                            }, 3000);
+                                                                                                                                                                                                                                              } else {
+                                                                                                                                                                                                                                                  textAreaError.style.display = "none";
+                                                                                                                                                                                                                                                      textArea.style.borderBottom = "1px solid green";
+                                                                                                                                                                                                                                                        }
 
-  btnSubmit.addEventListener("click", (e) => {
-    e.preventDefault();
-    validInputs();
-  });
-}
+                                                                                                                                                                                                                                                          
+                                                                                                                                                                                                                                                            if (allValid) {
+                                                                                                                                                                                                                                                                successMessage.style.display = "flex";
+                                                                                                                                                                                                                                                                    setTimeout(() => {
+                                                                                                                                                                                                                                                                          successMessage.style.display = "none";
+                                                                                                                                                                                                                                                                              }, 3000);
+
+                                                                                                                                                                                                                                                                                  
+                                                                                                                                                                                                                                                                                      textArea.value = "";
+                                                                                                                                                                                                                                                                                          inputs.forEach((input) => (input.value = ""));
+                                                                                                                                                                                                                                                                                            }
+                                                                                                                                                                                                                                                                                            };
+
+                                                                                                                                                                                                                                                                                            btnSubmit.addEventListener("click", (e) => {
+                                                                                                                                                                                                                                                                                              e.preventDefault();
+                                                                                                                                                                                                                                                                                                validInputs();
+                                                                                                                                                                                                                                                                                                });
 
 //form validation end
 
