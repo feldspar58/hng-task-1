@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Contact</title>
+  </head>
+  <body>
+    <main class="contact-info">
+      <nav class="main-nav">
+        <div class="inspo">FELDSPAR JOE</div>
+        <ul class="nav-links">
+          <li><a href="/index.html">HOME</a></li>
+          <li><a href="/contact.html">CONTACT FORM</a></li>
+          <li><a href="/about.html">ABOUT ME</a></li>
+        </ul>
+      </nav>
+
+      <nav class="mobile">
+        <div class="mobile-nav">
+          <div class="inspo-mobile">FELDSPAR JOE</div>
+          <div class="hamburger">
+            <img src="/image/icon-hamburger.svg" alt="menu" />
+          </div>
+        </div>
+        <div class="sidebar">
+          <a href="#" class="list-item close">
+            <img src="/image/icon-close.svg" alt="icon-close" />
+          </a>
+          <a href="/index.html" class="list-item">HOME</a>
+          <a href="/contact.html" class="list-item">CONTACT FORM</a>
+          <a href="/about.html" class="list-item">ABOUT ME</a>
+        </div>
+      </nav>
+
+      <div class="contact">
+        <div class="contact-heading">
+          <h1>GET IN TOUCH</h1>
+          <p>
+            Get in touch with me for more information on my journey at HNG
+            Season 13.
+          </p>
+        </div>
+
+        <form action="#" method="post" class="contact-form" data-testid="test-contact-form">
+          <div class="name-email">
+            <div class="full-name">
+              <label for="name">Full Name:</label>
+              <input
+                type="text"
+                id="name"
+                name="name"
+                data-testid="test-contact-name"
+                aria-describedby="error-name"
+                required
+              />
+              <p
+                id="error-name"
+                data-testid="test-contact-error-name"
+                class="error-message"
+                style="display: none;"
+              >
+                This field is required
+              </p>
+            </div>
+
+            <div class="email">
+              <label for="email">Email:</label>
+              <input
+                type="email"
+                id="email"
+                name="email"
+                data-testid="test-contact-email"
+                aria-describedby="error-email"
+                required
+              />
+              <p
+                id="error-email"
+                data-testid="test-contact-error-email"
+                class="error-message"
+                style="display: none;"
+              >
+                Please enter a valid email address
+              </p>
+            </div>
+          </div>
+
+          <div class="subject">
+            <label for="subject">Subject:</label>
+            <input
+              type="text"
+              id="subject"
+              name="subject"
+              data-testid="test-contact-subject"
+              aria-describedby="error-subject"
+              required
+            />
+            <p
+              id="error-subject"
+              data-testid="test-contact-error-subject"
+              class="error-message"
+              style="display: none;"
+            >
+              This field is required
+            </p>
+          </div>
+
+          <div class="message">
+            <label for="message">Message:</label>
+            <textarea
+              id="message"
+              name="message"
+              rows="5"
+              data-testid="test-contact-message"
+              aria-describedby="error-message"
+              required
+            ></textarea>
+            <p
+              id="error-message"
+              data-testid="test-contact-error-message"
+              class="error-message"
+              style="display: none;"
+            >
+              Message must be at least 10 characters
+            </p>
+          </div>
+
+          <button type="submit" class="btn" data-testid="test-contact-submit">
+            Submit
+          </button>
+        </form>
+      </div>
+
+      <div
+        class="success"
+        data-testid="test-contact-success"
+        style="display: none;"
+      >
+        <span>
+          <img src="./image/icon-success-check.svg" alt="success check" />
+          <h4>Message Sent!</h4>
+        </span>
+        <p>Thanks for completing the form. We'll be in touch soon!</p>
+      </div>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
